@@ -69,6 +69,10 @@ class InferFeatsTransform(Transform):
             # Do nothing
             return example
 
+        if len(example["src"]) == 0:
+            # if empty example
+            return example
+
         if self.reversible_tokenization == "joiner":
             original_src = example["src_original"] \
                 if self.prior_tokenization else None
